@@ -46,7 +46,7 @@ class PrepFiles {
 				e.printStackTrace();
 			}
 			String refNum = doc.select("title").text();
-			Pattern pattern = Pattern.compile(".*Id.*=.?" + "([0-9]+\\z)");
+			Pattern pattern = Pattern.compile(".*Id\\s*=\\s*" + "(\\S+\\z)");
 			Matcher matcher = pattern.matcher(refNum);
 			if(matcher.matches()) {
 				refNum = matcher.group(1);
@@ -56,7 +56,7 @@ class PrepFiles {
 				refNum = "-";
 
 			String pmid = doc.select("iframe").attr("src");
-			pattern = Pattern.compile(".+uids.*=([0-9]+\\z)");
+			pattern = Pattern.compile(".+uids.*=\\s*(\\S+\\z)");
 			matcher = pattern.matcher(pmid);
 			if(matcher.matches()) {
 				pmid = matcher.group(1);
@@ -66,6 +66,7 @@ class PrepFiles {
 			
 			pw.println(refNum + " " + file.getName() + " " + pmid);
 		}
+		pw.println("-" + "literature-.html" + "-");
 		pw.close();
 		return pairs;
 	}
