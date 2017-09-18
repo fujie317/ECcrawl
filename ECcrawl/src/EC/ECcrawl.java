@@ -28,7 +28,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class ECcrawl {
 
 	public static void main(String[] args) {
-		String docNum = "output/refNumLiterature.txt";
+		String docNum = "files/refNumLiterature.txt";
 		HashMap<String, String> refDocMap = refDocNums(docNum);
 		HashMap<String, String[]> pmiDocInfo = new HashMap<>();
 		List<File> files = PrepFiles.getFiles(args[0], "enzyme");
